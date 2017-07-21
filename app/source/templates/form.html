@@ -36,7 +36,7 @@
             <label for="InputLastName">Apellidos</label>
             <input ng-model="ctrl.userData.data.apellidos.text" type="text" class="form-control" id="InputLastName" aria-describedby="emailHelp" placeholder="Ingrese sus apellidos">
             <small id="LastNameHelp" class="form-text text-muted">
-                {{ctrl.userData.results.apellido.message}}
+                {{ctrl.userData.results.apellidos.message}}
             </small>
         </div>
     </div>
@@ -59,9 +59,11 @@
     <div class="row">
         <div class="form-group col-6">
             <label for="InputEmail">Correo electrónico</label>
-            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico">
+            <input type="email" ng-model="ctrl.userData.data.mail.text" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico">
 
-            <small id="emailHelp" class="form-text text-muted"></small>
+            <small id="emailHelp" class="form-text text-muted">
+                {{ctrl.userData.results.mail.message}}
+            </small>
         </div>
     </div>
 
