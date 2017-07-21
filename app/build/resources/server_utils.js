@@ -1,8 +1,8 @@
 angular.module('server.utils', [])
 
 .factory('main_server', ['$http', function($http){
-    var serverAddress = 'http://fast-mountain-65244.herokuapp.com';
-    var serverPort = '80';
+    var serverAddress = 'https://transformers-satrack.appspot.com/';
+    var serverPort = '';
     var fullServerAddress = serverAddress + ':' + serverPort + '/';
 
     function sendMessage(msg, method, headers, progressHandler){
@@ -16,6 +16,15 @@ angular.module('server.utils', [])
             eventHandlers: {
                 progress: progressHandler ? progressHandler: function(){}
             }
+        });
+    }
+
+    function getPortfolios(){
+        return $http({
+            url: fullServerAddress+'getPortfolios',
+            method: 'GET',
+            withCredentials: false,
+            crossDomain: true
         });
     }
 
@@ -33,7 +42,8 @@ angular.module('server.utils', [])
         sendMessage: sendMessage,
         sendPersonalInfo: function(infoJson){
             return sendMessage(infoJson, 'POST');
-        }
+        },
+        getPortfolios: getPortfolios
     }
 }])
 .factory('user_data', [function(){
