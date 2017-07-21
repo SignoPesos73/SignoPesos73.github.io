@@ -1,7 +1,7 @@
 angular.module('server.utils', [])
 
 .factory('main_server', ['$http', function($http){
-    var serverAddress = 'https://transformers-satrack.appspot.com/';
+    var serverAddress = 'https://transformers-satrack.appspot.com';
     var serverPort = '80';
     var fullServerAddress = serverAddress + ':' + serverPort + '/';
 
