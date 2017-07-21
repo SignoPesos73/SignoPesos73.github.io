@@ -15,7 +15,7 @@ angular.module('server.utils', [])
         return $http({
             url: fullServerAddress,
             method: method ? method : 'POST',
-            data: msg,
+            data: JSON.stringify(msg),
             headers: headers,
             withCredentials: false,
             crossDomain: true,

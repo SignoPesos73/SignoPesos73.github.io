@@ -1,8 +1,8 @@
 angular.module('server.utils', [])
 
 .factory('main_server', ['$http', function($http){
-    var serverAddress = 'https://transformers-satrack.appspot.com/';
-    var serverPort = '';
+    var serverAddress = 'http://localhost';
+    var serverPort = '8080';
     var fullServerAddress;
 
     if (serverPort != ''){
@@ -15,7 +15,7 @@ angular.module('server.utils', [])
         return $http({
             url: fullServerAddress,
             method: method ? method : 'POST',
-            data: msg,
+            data: JSON.stringify(msg),
             headers: headers,
             withCredentials: false,
             crossDomain: true,
