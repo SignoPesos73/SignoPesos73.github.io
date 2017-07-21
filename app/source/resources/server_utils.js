@@ -19,6 +19,15 @@ angular.module('server.utils', [])
         });
     }
 
+    function getPortfolios(){
+        return $http({
+            url: fullServerAddress+'getPortfolios',
+            method: 'GET',
+            withCredentials: false,
+            crossDomain: true
+        });
+    }
+
     function testSend(msg){
         return {
             then: function(f){
@@ -33,7 +42,8 @@ angular.module('server.utils', [])
         sendMessage: sendMessage,
         sendPersonalInfo: function(infoJson){
             return sendMessage(infoJson, 'POST');
-        }
+        },
+        getPortfolios: getPortfolios
     }
 }])
 .factory('user_data', [function(){

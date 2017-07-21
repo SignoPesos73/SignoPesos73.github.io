@@ -6,6 +6,19 @@ angular.module('form.Fields', [])
         var self = this;
         self.userData = user_data;
         self.loading = false;
+        self.portfoliosInfo = {};
+        self.administradoras = [];
+        self.selectedAdminFics = [];
+
+        self.loadFics = function(admin){
+            self.selectedAdminFics = self.portfoliosInfo[admin];
+            self.userData.data.nombre_fondo.text = "";
+        }
+
+        main_server.getPortfolios().then(function(response){
+            self.portfoliosInfo = response.data;
+            self.administradoras = Object.keys(self.portfoliosInfo);
+        })
 
         self.submit = function(){
             self.loading = true;

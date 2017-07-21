@@ -71,14 +71,9 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="InputId">Administradora</label>
-            <input type="text" list="adminNames" ng-model="ctrl.userData.data.administradora.text" class="form-control" id="InputAdmin" aria-describedby="admin" placeholder="Ingrese la administradora">
+            <input ng-change="ctrl.loadFics(ctrl.userData.data.administradora.text)" type="text" list="adminNames" ng-model="ctrl.userData.data.administradora.text" class="form-control" id="InputAdmin" aria-describedby="admin" placeholder="Ingrese la administradora">
             <datalist id="adminNames">
-                <option value="AFIN S.A.">
-                <option value="BTG PACTUAL S.A.">
-                <option value="CITY VALORES">
-                <option value="CORREDORES DAVIVIENDA">
-                <option value="HELM">
-                <option value="ULTRASERFINCO S.A.">
+                <option ng-repeat="admin in ctrl.administradoras">{{admin}}</option>
             </datalist>
 
             <small id="admin" class="form-text text-muted">
@@ -90,16 +85,10 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="InputId">Nombre del fondo</label>
-            <input type="text" list="fundName" ng-model="ctrl.userData.data.nombre_fondo.text" class="form-control" id="InputFund" aria-describedby="fundNameMSG" placeholder="Ingrese el nombre del fondo">
+            <input autocomplete="off"  type="text" list="fundName" ng-model="ctrl.userData.data.nombre_fondo.text" class="form-control" id="InputFund" aria-describedby="fundNameMSG" placeholder="Ingrese el nombre del fondo">
 
             <datalist id="fundName">
-                <option value="FIC ABIERTO MIDAS RENTA FIJA">
-                <option value="FIC ABIERTO MIDAS MONEY MARKET">
-                <option value="FIC CERRADO MIDAS ALTERNATIVO">
-                <option value="FIC INTERÉS">
-                <option value="FIC MULTIESCALA">
-                <option value="FIC ACCIÓN">
-                <option value="FIC FACTOR FUTURO">
+                <option ng-repeat="fic in ctrl.selectedAdminFics">{{fic}}</option>
             </datalist>
             <small id="fundNameMSG" class="form-text text-muted">
                 {{ctrl.userData.results.nombre_fondo.message}}
