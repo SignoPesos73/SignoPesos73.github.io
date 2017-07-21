@@ -12,6 +12,7 @@ angular.module('server.utils', [])
     }
 
     function sendMessage(msg, method, headers, progressHandler){
+        console.log("-", JSON.stringify(msg));
         return $http({
             url: fullServerAddress,
             method: method ? method : 'POST',
